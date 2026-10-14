@@ -33,7 +33,7 @@
       if ( $news->have_posts() ) : ?>
       <ul class="news-list">
         <?php while ( $news->have_posts() ) : $news->the_post(); ?>
-        <li><time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo esc_html( get_the_date( 'Y.m.d' ) ); ?></time><span class="news-category"><?php $categories = get_the_category(); echo esc_html( $categories ? $categories[0]->name : 'お知らせ' ); ?></span><h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?> <span aria-hidden="true">→</span></a></h3></li>
+        <?php get_template_part( 'template-parts/news-item' ); ?>
         <?php endwhile; ?>
       </ul>
       <?php else : ?><p>お知らせはまだありません。</p><?php endif; wp_reset_postdata(); ?><a class="text-link" href="<?php echo esc_url( nest_work_url( 'news/' ) ); ?>">お知らせ一覧を見る →</a></section>
